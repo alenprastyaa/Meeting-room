@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import React from 'react'
+import Navbars from './components/navbars/Navbars'
+import Sidebars from './components/sidebars/Sidebars'
+import { Route, Routes } from 'react-router-dom'
+import PemesananRuang from './components/pemesanan/PemesananRuang'
+import Dashboard from './components/dashboard/Dashboard'
+import 'rsuite/dist/rsuite.min.css';
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Navbars />
+      <div className='flex'>
+        <Sidebars />
+        <Routes>
+          <Route path="/pemesanan-ruang" element={<PemesananRuang />} />
+          <Route path="/" element={<Dashboard />} />
+        </Routes>
+      </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
